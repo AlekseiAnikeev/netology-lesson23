@@ -19,7 +19,7 @@ public class Main {
                     Education.values()[new Random().nextInt(Education.values().length)])
             );
         }
-        showMinors(persons);
+        System.out.println("Зарегистрировано несовершеннолетних: " + showMinorsCount(persons));
         List<String> recruit = createRecruitList(persons);
         //recruit.forEach(System.out::println);
         List<String> ableBodiedPopulation = ableBodiedPopulation(persons);
@@ -42,10 +42,9 @@ public class Main {
                 .toList();
     }
 
-    private static void showMinors(Collection<Person> persons) {
-        long count = persons.stream()
+    private static Long showMinorsCount(Collection<Person> persons) {
+        return persons.stream()
                 .filter(p -> p.getAge() < 18)
                 .count();
-        System.out.println("Зарегистрировано несовершеннолетних: " + count);
     }
 }
